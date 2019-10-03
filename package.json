@@ -1,0 +1,35 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "Repositorio creado para desarrollar la practica 3 y 4 del laboratorio de Análisis y diseño de sistemas 1",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/app.js",
+    "test": "nyc --reporter=text mocha",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dan192596/AYDS1_Sistema_Bancario.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dan192596/AYDS1_Sistema_Bancario/issues"
+  },
+  "homepage": "https://github.com/dan192596/AYDS1_Sistema_Bancario#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-myconnection": "^1.0.4",
+    "express-session": "^1.17.0",
+    "mocha": "^6.2.1",
+    "morgan": "^1.9.1",
+    "mysql": "^2.17.1",
+    "supertest": "^4.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
