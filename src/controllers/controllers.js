@@ -81,6 +81,31 @@ controller.signup = function(req, res){
 
 
 
+controller.dashboard = function(req, res, next){
+	
+	var user =  req.session.user,
+	userId = req.session.userId;
+	
+	if(userId == null){
+		res.redirect("/login");
+		return;
+	}
+	 
+		   res.render('profile.ejs', {user:user});	  
+
+};
+
+controller.logout = function(req, res, next){
+	
+	req.session.destroy((err) => {
+        if(err) {
+            return console.log(err);
+        }
+        res.redirect('/');
+    });  
+
+};
+
 
 
  module.exports = controller;
