@@ -34,7 +34,10 @@ controller.signup = function(req, res){
 			 req.session.userId = results[0].iduser;
 			 req.session.user = results[0];
 			 console.log(results[0].iduser);
+			 //res.redirect('/home/dashboard');
+			
 			 res.redirect('/home/dashboard');
+			 
 		  }
 		  else{
 			 message = 'Wrong Credentials.';

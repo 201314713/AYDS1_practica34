@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/app.js",
-    "test": "nyc --reporter=text mocha",
+    "test": "nodemon --exec \"mocha -R min\"",  
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -30,6 +30,9 @@
     "supertest": "^4.0.2"
   },
   "devDependencies": {
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.3",
+    "mocha": "^6.2.1",
+    "supertest": "^4.0.2",
+    "chai": "^4.2.0"
   }
 }
