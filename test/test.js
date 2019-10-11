@@ -24,3 +24,13 @@ describe("prueba login", function(){
     })
 
 })
+
+
+//prueba la vista de signup
+describe ("vista signup",function(){
+    it("should get the signup form", function(done){
+        request(app).get('/signup')
+        .expect(200,done)
+    })
+    
+})
