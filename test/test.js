@@ -34,3 +34,21 @@ describe ("vista signup",function(){
     })
     
 })
+
+
+
+// prueba de post de los datos de signup 
+describe("prueba signup", function(){
+    it("should return success code ", function(done){
+        request(app).post('/signup') 
+        .send({nombre: 'Robert', apellido: 'Sheen',correo: 'test@gmail.com',no_cuenta:'100',password:'1234',dpi:"1235",saldo_inicial: 100})
+        .expect(200, done)
+    })
+
+    it("should return succes code but not redirect", function(done){
+        request(app).post('/signup') 
+        .send({nombre: 'Robert', apellido: 'Sheen',correo: 'test2@gmail.com',no_cuenta:'100',password:'1234',dpi:"222",saldo_inicial: 100})
+        .expect(200, done)
+    })
+
+})
