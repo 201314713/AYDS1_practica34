@@ -112,4 +112,30 @@ controller.logout = function(req, res, next){
 
 
 
+
+
+
+controller.cambio = function(req, res, next){
+	
+
+	var sql = "SELECT * from banco";
+	req.getConnection((err, conn) => {
+ 
+	 conn.query(sql, function(err, result) {
+		 if (!err){
+	   message = "Succesfull";
+	   //res.render('login.ejs',{message: message});
+		 }
+		 else
+		 message = "Wrong! There were errors";
+	   //res.render('signup.ejs',{message: message});
+		 console.log(err);
+	});
+ });
+	
+
+};
+
+
+
  module.exports = controller;

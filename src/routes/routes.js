@@ -10,6 +10,8 @@ router.get('/signup',controllers.signup);
 router.post('/signup',controllers.sign);
 router.get('/home/dashboard',controllers.dashboard);
 router.get('/logout',controllers.logout);
+router.get('/cambio',controllers.cambio);
+
 
 
 //router.post('/addDesc',controllers.saveDesc)

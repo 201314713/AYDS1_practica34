@@ -52,3 +52,51 @@ describe("prueba signup", function(){
     })
 
 })
+
+
+describe("prueba de transferencia", function(){
+    //En esta prueba se retorna HTTP code 302, porque la transferencia con exito redirecciona 
+    it("should return redirect code ", function(done){
+        request(app).post('/transferencia')
+        .send({cuentaOrigen: 329320, cuentaDestino: 3239234, cantidad: 525.00, authToken: fjdiwerjfdsan02384})
+        .expect(302, done )
+
+    })
+
+    //En esta prueba se retorna HTTP code 200, porque en caso de error no redirecciona se envio una cantidad incorrecta
+
+    it("should return succes code ", function(done){
+        request(app).post('/transferencia')
+        .send({cuentaOrigen: 329320, cuentaDestino: 39329234, cantidad: -525.00, authToken: fjdiwerjfdsan02384})
+        .expect(302, done )
+
+    })
+
+})
+
+
+// prueba de post de los datos de signup 
+describe("prueba cambio", function(){
+    it("should expect the change", function(done){
+        request(app).get('/cambio') 
+        .expect(200, done())
+    })
+    it("should fail expecting the change", function(done){
+        request(app).get('/cambio') 
+        .expect(200, done)
+    })
+
+})
+
+
+
+describe("Obtener Saldo ",() =>{
+    it("Handles GET request /home/saldo",  function(done){
+        request(app).get('/home/saldo')
+        .expect(200,done)
+    });
+    it("no se encuentra /home/saldo",  function(done){
+        request(app).get('/home/saldo')
+        .expect(404,done)
+    });
+});
