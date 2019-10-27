@@ -11,6 +11,9 @@ router.post('/signup',controllers.sign);
 router.get('/home/dashboard',controllers.dashboard);
 router.get('/logout',controllers.logout);
 router.get('/cambio',controllers.cambio);
+router.get('/profile',controllers.profile);
+router.get('/deposito',controllers.deposito);
+router.post('/deposito',controllers.deposito);
 
 
 

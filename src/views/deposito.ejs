@@ -1,0 +1,54 @@
+        <%- include partial/_header %>
+    <div class="container col-sm-12" id="mainform">
+            <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                                                           
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">Deposito</div>
+                        </div> 
+                        <div class="panel-body" >
+                            <form class="form-horizontal" role="form" method="post" action="/deposito" onSubmit="return checkblank(this);">
+                                <% if (message.length > 0) { %>
+                                                                                                            <div class="alert alert-success col-sm-12"><%= message %></div>
+                                                                                                <% } %>
+                                <div id="signupalert" style="display:none" class="alert alert-danger">
+                                    <p>Error:</p>
+                                    <span></span>
+                                </div>
+                                    
+                                <div class="form-group">
+                                    <label for="cuenta" class="col-md-3 control-label">Numero de cuenta a depositar</label>
+                                    <div class="col-md-9">
+                                        <input type="number" class="form-control" name="cuenta" placeholder="Numero cuenta">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="deposito" class="col-md-3 control-label">Deposito en Quetzalez</label>
+                                        <div class="col-md-9">
+                                            <input type="number" class="form-control" name="deposito" placeholder="Cantidad">
+                                        </div>
+                                    </div>
+                               
+                                
+                                <div class="form-group">
+                                    <!-- Button -->                                       
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button id="btn-deposito" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Depositar</button>
+                                        
+                                    </div>
+                                </div>
+                               
+                                
+                                
+                                
+                            </form>
+                         </div>
+                    </div>
+              
+                
+         </div>
+    </div>
+   
+</body>
+</html>

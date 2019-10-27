@@ -1,13 +1,62 @@
+<%- include partial/_header %>
 
-<html lang="en">
- 
-    <%- include partial/_header %>
-    <!-- Main component for a primary marketing message or call to action -->
-       <div class="jumbotron">
-         <h1>Welcome</h1>
-         <p>Hello <%= user.nombre %></p>
-         <p>
-           <a class="btn btn-lg btn-primary" href="#" role="button">Profile view »</a>
-         </p>
-       </div>
-     <%- include partial/_footer %>
+<div class="container">
+    <br><br><br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="http://www.emmegi.co.uk/wp-content/uploads/2019/01/User-Icon.jpg" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                                <%= user.nombre %> <%= user.apellido %></h4>
+                        <small><cite title="San Francisco, USA">Guatemala <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i> <%= user.correo %>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                        <!-- Split button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary">
+                                Opciones</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span><span class="sr-only">Opciones</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Realizar Deposito</a></li>
+                                <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Realizar Retiro</a></li>
+                                <li><a href="https://www.facebook.com/jquery2dotnet">Ver tipo de cambio</a></li>
+                                <li class="divider"></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+        <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="well well-sm">
+                        <div class="row">
+                        
+                            <div class="col-sm-6 col-md-8">
+                                <h4>
+                                        Saldo Actual:</h4>
+                                
+                                <p>
+                                    <i class="glyphicon glyphicon-piggy-bank"></i>    Q.<%= user.saldo_inicial %>
+                                    <br />
+                                <!-- Split button -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div></div>

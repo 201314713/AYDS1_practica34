@@ -62,9 +62,9 @@ controller.signup = function(req, res){
 	   var lname= post.last_name;
 	   var mail= post.mail;
 	   var dpi= post.dpi;
-	   var saldo= post.saldo;
+	   var saldo =post.saldo;
   
-	   var sql = "INSERT INTO `user`(`nombre`,`apellido`,`correo`,`no_cuenta`, `password`, `dpi` , `saldo_inicial`) VALUES ('" + fname + "','" + lname + "','" + mail + "','" + account + "','" + pass  + "','" + dpi + "','" + saldo+ "')";
+	   var sql = "INSERT INTO `user`(`nombre`,`apellido`,`correo`,`no_cuenta`, `password`, `dpi` , `saldo_inicial`) VALUES ('" + fname + "','" + lname + "','" + mail + "','" + account + "','" + pass  + "','" + dpi + "','" + saldo + "')";
 	   req.getConnection((err, conn) => {
 	
 		conn.query(sql, function(err, result) {
@@ -95,7 +95,7 @@ controller.dashboard = function(req, res, next){
 		return;
 	}
 	 
-		   res.render('profile.ejs', {user:user});	  
+		   res.render('index.ejs', {user:user});	  
 
 };
 
@@ -136,6 +136,74 @@ controller.cambio = function(req, res, next){
 
 };
 
+
+controller.profile = function(req, res){
+	var user =  req.session.user,
+	userId = req.session.userId;
+	res.render('profile',{user: user});
+};
+
+
+
+
+
+controller.deposito = function(req, res){
+	message = '';
+	var user =  req.session.user,
+	userId = req.session.userId;
+	if(req.method == "POST"){
+		var post  = req.body;
+		var cuenta = post.cuenta;
+		var deposito = post.deposito;
+	
+		var sql = "SELECT saldo_inicial FROM user WHERE no_cuenta = '" + userId+ "';";
+		   req.getConnection((err, conn) => {
+		
+			conn.query(sql, function(err, result) {
+				if (!err){
+
+					console.log("resultado: " + result[0].saldo_inicial +" - " +deposito);
+					if (result[0].saldo_inicial > deposito )
+					{
+						var sql = "CALL transaccion(" + userId+ "," + cuenta + "," +deposito+ ");";
+		   				req.getConnection((err, conn) => {
+		
+							conn.query(sql, function(err, result) {
+								if (!err){
+									message = "Transacción exitosa";
+
+								}
+								else
+								{
+									message = "Error en transacción";
+
+								}
+		   					});
+						});
+
+
+
+					}
+					else
+					{
+						message = "Transacción no realizada: No hay suficientes fondos";
+
+					}
+		 			 res.render('deposito.ejs',{message: message});
+
+				}
+				else
+				message = "Error en transacción";
+				res.render('deposito.ejs',{message: message});
+
+				
+				console.log(err);
+		   });
+		});
+} else {
+	res.render('deposito',{user: user,message:message});
+ }
+};
 
 
  module.exports = controller;
