@@ -52,9 +52,32 @@ controller.signup = function(req, res){
 	}         
  };
 
- controller.sign = function(req, res){
+
+ function EmailValido(mail) { 
+	return /^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail); 
+  }
+  
+  function validarCuenta(numero){
+	return (/^([0-9])*$/.test(numero) );
+  }
+
+  function validarDPI(dpi){
+	  longitud = dpi.length==13;
+	  return (/^([0-9])*$/.test(dpi) && longitud);
+  }
+
+  function validarNombres(nombre){
+	return /^[A-Z]+$/i.test(nombre);
+  }
+
+  function ValidarPass(pass){
+	return pass.length>5;
+  }
+
+
+  controller.sign = function(req, res){
 	message = '';
-	if(req.method == "POST"){
+
 	   var post  = req.body;
 	   var account= post.account;
 	   var pass= post.password;
@@ -64,6 +87,8 @@ controller.signup = function(req, res){
 	   var dpi= post.dpi;
 	   var saldo =post.saldo;
   
+	   if ( validarDPI(dpi) && EmailValido(mail) && validarCuenta(account) &&  validarNombres(fname) && validarNombres(lname) && ValidarPass(pass))
+		{
 	   var sql = "INSERT INTO `user`(`nombre`,`apellido`,`correo`,`no_cuenta`, `password`, `dpi` , `saldo_inicial`) VALUES ('" + fname + "','" + lname + "','" + mail + "','" + account + "','" + pass  + "','" + dpi + "','" + saldo + "')";
 	   req.getConnection((err, conn) => {
 	
@@ -74,15 +99,32 @@ controller.signup = function(req, res){
 			}
 			else
 			message = "Wrong! There were errors";
+			console.log(message);
 		  res.render('signup.ejs',{message: message});
-			console.log(err);
+			
 	   });
 	});
-} else {
-	res.render('signup');
- }
-};
+	}else
+		{
+			        message = "Wrong! There were errors: ";
+					if (!EmailValido(mail))
+						message = message + " invalid email";
+					if (!validarDPI(dpi))
+						message = message + " invalid DPI";
+					if (!validarCuenta(account))
+						message = message + " invalid account";
+					if (!validarNombres(fname))
+						message = message + " invalid name";
+					if (!validarNombres(lname))
+						message = message + " invalid last name";
+					if (!ValidarPass(pass))
+						message = message + " invalid password to short";
+						console.log(message);
+						res.render('signup.ejs',{message: message});
+		}
 
+
+};
 
 
 controller.dashboard = function(req, res, next){
