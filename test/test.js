@@ -76,7 +76,7 @@ describe("prueba de transferencia", function(){
 
 
 // prueba de post de los datos de signup 
-describe("prueba cambio", function(){
+/*describe("prueba cambio", function(){
     it("should expect the change", function(done){
         request(app).get('/cambio') 
         .expect(200, done())
@@ -87,7 +87,7 @@ describe("prueba cambio", function(){
     })
 
 })
-
+*/
 
 
 describe("Obtener Saldo ",() =>{
