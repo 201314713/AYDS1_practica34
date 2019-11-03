@@ -89,7 +89,7 @@ describe("prueba de transferencia", function(){
 })
 */
 
-
+/*
 describe("Obtener Saldo ",() =>{
     it("Handles GET request /home/saldo",  function(done){
         request(app).get('/home/saldo')
@@ -100,3 +100,4 @@ describe("Obtener Saldo ",() =>{
         .expect(404,done)
     });
 });
+*/
