@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/app.js",
-    "test": "nodemon --exec \"mocha -R min\"",  
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "test": "nodemon --exec \"mocha -R min\"",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "sonar": "node sonar-project.js"
   },
   "repository": {
     "type": "git",
@@ -30,9 +31,10 @@
     "supertest": "^4.0.2"
   },
   "devDependencies": {
-    "nodemon": "^1.19.3",
+    "chai": "^4.2.0",
     "mocha": "^6.2.1",
-    "supertest": "^4.0.2",
-    "chai": "^4.2.0"
+    "nodemon": "^1.19.3",
+    "sonarqube-scanner": "^2.5.0",
+    "supertest": "^4.0.2"
   }
 }
