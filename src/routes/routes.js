@@ -15,6 +15,13 @@ router.get('/profile',controllers.profile);
 router.get('/deposito',controllers.deposito);
 router.post('/deposito',controllers.deposito);
 
+//Ejemplo para llamar : http://localhost:3000/cambiodia
+router.get('/cambiodia', controllers.cambiodia);
+
+// Ejemplo para llamar: http://localhost:3000/cambiorango?fecha=06/11/2019
+// fecha es la fecha inicial
+router.get('/cambiorango', controllers.cambiorango);
+
 
 
 //router.post('/addDesc',controllers.saveDesc)
