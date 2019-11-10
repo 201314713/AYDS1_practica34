@@ -1,3 +1,6 @@
+const request = require('request');
+
+
 const controller={};
 
 
@@ -155,7 +158,39 @@ controller.logout = function(req, res, next){
 
 
 
+controller.cambiodia= function(req, res,next){
+		
 
+	request('https://usacdaniel-eval-prod.apigee.net/tipodecambio/tipocambiodia', { json: true }, (err, response, body) => {
+		if (err) { return console.log(err); }
+		res.json(body);
+		next();
+
+		
+	});
+
+	
+
+
+};
+
+controller.cambiorango = function(req, res, next){
+
+
+	let fecha= req.query.fecha; 
+
+	direccion = 'https://usacdaniel-eval-prod.apigee.net/tipodecambio/tipocambiofechainicial?fechainit=';
+	direccion = direccion+ fecha;
+
+	request(direccion, {json:true},
+	        function(err,response, body){
+				if (err) { return console.log(err); }
+				res.json(body);
+				next();
+			}
+	
+	)
+};
 
 controller.cambio = function(req, res, next){
 	
