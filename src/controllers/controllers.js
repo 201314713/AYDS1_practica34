@@ -163,8 +163,10 @@ controller.cambiodia= function(req, res,next){
 
 	request('https://usacdaniel-eval-prod.apigee.net/tipodecambio/tipocambiodia', { json: true }, (err, response, body) => {
 		if (err) { return console.log(err); }
-		res.json(body);
-		next();
+		var data = null;
+		var cambio = body.TipoCambioDiaResponse.TipoCambioDiaResult.CambioDolar.VarDolar.referencia
+		res.render('tipo_cambio',{cambio: cambio, data: data});
+
 
 		
 	});
@@ -181,34 +183,30 @@ controller.cambiorango = function(req, res, next){
 
 	direccion = 'https://usacdaniel-eval-prod.apigee.net/tipodecambio/tipocambiofechainicial?fechainit=';
 	direccion = direccion+ fecha;
-
+	var cambio = null;
+	request('https://usacdaniel-eval-prod.apigee.net/tipodecambio/tipocambiodia', { json: true }, (err, response, body) => {
+		if (err) { return console.log(err); }
+		cambio = body.TipoCambioDiaResponse.TipoCambioDiaResult.CambioDolar.VarDolar.referencia
+	});
 	request(direccion, {json:true},
 	        function(err,response, body){
 				if (err) { return console.log(err); }
-				res.json(body);
-				next();
+				var dates =  body.TipoCambioFechaInicialResponse.TipoCambioFechaInicialResult.Vars.Var;
+				
+				//console.log('este ese:' + );
+				//var data = body.TipoCambioFechaInicialResponse.TipoCambioFechaInicialResult.Vars.Var
+				res.render('tipo_cambio',{cambio:cambio,data: dates});
+
+
 			}
 	
 	)
 };
 
 controller.cambio = function(req, res, next){
-	
-
-	var sql = "SELECT * from banco";
-	req.getConnection((err, conn) => {
- 
-	 conn.query(sql, function(err, result) {
-		 if (!err){
-	   message = "Succesfull";
-	   //res.render('login.ejs',{message: message});
-		 }
-		 else
-		 message = "Wrong! There were errors";
-	   //res.render('signup.ejs',{message: message});
-		 console.log(err);
-	});
- });
+	var data
+	data.cambio
+	res.render('tipo_cambio',{data: data});
 	
 
 };
