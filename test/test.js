@@ -41,7 +41,7 @@ describe ("vista signup",function(){
 describe("prueba signup", function(){
     it("should return success code ", function(done){
         request(app).post('/signup') 
-        .send({nombre: 'Robert', apellido: 'Sheen',correo: 'test@gmail.com',no_cuenta:'100',password:'1234',dpi:"1235",saldo_inicial: 100})
+        .send({nombre: 'Robert', apellido: 'Sheen',correo: "test14@gmail.com",no_cuenta:"10011",password:'1234567',dpi:"2284230660101",saldo_inicial: 100, mail: "test14@gmail.com", account: "10011"})
         .expect(200, done)
     })
 
@@ -53,12 +53,12 @@ describe("prueba signup", function(){
 
 })
 
-
+/* 
 describe("prueba de transferencia", function(){
     //En esta prueba se retorna HTTP code 302, porque la transferencia con exito redirecciona 
     it("should return redirect code ", function(done){
-        request(app).post('/transferencia')
-        .send({cuentaOrigen: 329320, cuentaDestino: 3239234, cantidad: 525.00, authToken: fjdiwerjfdsan02384})
+        request(app).post('/deposito')
+        .send({no_cuenta: 329320, saldo_inicial:525.00})
         .expect(302, done )
 
     })
@@ -66,13 +66,13 @@ describe("prueba de transferencia", function(){
     //En esta prueba se retorna HTTP code 200, porque en caso de error no redirecciona se envio una cantidad incorrecta
 
     it("should return succes code ", function(done){
-        request(app).post('/transferencia')
-        .send({cuentaOrigen: 329320, cuentaDestino: 39329234, cantidad: -525.00, authToken: fjdiwerjfdsan02384})
+        request(app).post('/deposito')
+        .send({no_cuenta: 329320, saldo_inicial:-525.00})
         .expect(302, done )
 
     })
 
-})
+}) */
 
 
 // prueba de post de los datos de signup 
@@ -101,3 +101,14 @@ describe("Obtener Saldo ",() =>{
     });
 });
 */
+
+describe("Obtener Tipo cambio ",() =>{
+    it("Maneja la solicitud de tipo de cambio",  function(done){
+        request(app).get('/cambio ')
+        .expect(200,done)
+    });
+
+
+
+});
+

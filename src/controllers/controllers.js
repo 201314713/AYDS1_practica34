@@ -57,7 +57,7 @@ controller.signup = function(req, res){
 
 
  function EmailValido(mail) { 
-	return /^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail); 
+	return  /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i.test(mail); 
   }
   
   function validarCuenta(numero){
