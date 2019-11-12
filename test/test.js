@@ -10,20 +10,22 @@ describe ("vista login",function(){
     
 })
 
-describe("prueba login", function(){
+/*describe("prueba login", function(){
     it("should return success code ", function(done){
         request(app).post('/login') 
         .send({user_name: '5678920', password: 'perro'})
         .expect(500, done)
     })
 
-    it("should return succes code but not redirect", function(done){
+ /*   it("should return succes code but not redirect", function(done){
         request(app).post('/login') 
         .send({user_name: '923202', password: 'wrong_psw'})
         .expect(200, done)
     })
+    
 
 })
+*/
 
 
 //prueba la vista de signup
