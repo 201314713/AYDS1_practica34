@@ -1,0 +1,80 @@
+<%- include partial/_header %>
+
+<div class="container">
+    <br><br><br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="http://www.todayifoundout.com/wp-content/uploads/2010/02/gold-dollar-sign.jpg" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                               Tipo de Cambio</h4>
+                        <small><cite title="San Francisco, USA">Guatemala <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-usd"></i> El tipo de cambio hoy es:
+                            <br />
+                            &nbsp&nbsp&nbsp&nbsp  <%= cambio %></p>
+                        <!-- Split button -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <br><br><br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                   
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                               Tipo de Cambio desde:</h4>
+                               <div class="btn-group">
+                                    <input type='date' name="myDate" id="myDate" data-date-format="DD MMMM YYYY" max="2019-11-12"></input>
+
+                                <button type="button" class="btn btn-primary" onclick="myFunction()">
+                                    Seleccionar fecha</button>
+                                    <p id="demo"></p>
+
+                               
+                            </div>
+                            <br><br>    
+                        <p>
+                            <i class="glyphicon glyphicon-usd"></i>Los datos del rango son:
+                            <br />
+                           
+                            <% if(data) { for (var k in data){ %>
+                                <span> &nbsp&nbsp&nbsp&nbsp fecha: <%= data[k].fecha%>&nbsp venta:<%= data[k].venta%>&nbsp compra:<%= data[k].compra%><br></span>
+                            <%}  } else{ '' }%>
+                                
+                           
+                            
+                        <!-- Split button -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+ function myFunction() {
+    var x = document.getElementById("myDate").value;
+    x = x.slice(0, 10).split('-').reverse().join('/');
+    document.getElementById("demo").innerHTML = x;
+
+    window.location.href = 'http://localhost:3000/cambiorango?fecha=' + x
+ }
+
+</script>
