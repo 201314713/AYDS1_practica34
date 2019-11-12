@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/app.js",
-    "test": "nodemon --exec \"mocha -R min\"",
+    "test": "mocha -R min --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "sonar": "node sonar-project.js"
   },
