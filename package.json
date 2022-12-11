@@ -22,7 +22,7 @@
   "dependencies": {
     "chai": "^4.2.0",
     "ejs": "^2.7.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-myconnection": "^1.0.4",
     "express-session": "^1.17.0",
     "mocha": "^6.2.1",
